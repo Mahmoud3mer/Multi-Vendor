@@ -3,7 +3,7 @@ import { FaList } from 'react-icons/fa'
 
 export default function Header({showSidebar, setShowSidebar}) {
   return (
-    <div className='fixed top-0 left-0 px-2 lg:px-7 py-5 z-40 w-full'>
+    <div className='fixed top-0 left-0 px-2 lg:px-7 py-5 z-40 w-full bg-[#cdcae9]'>
       <div className='bg-[#b1addf] ml-0 lg:ml-[260px] h-[65px] rounded-md px-5 transition-all flex justify-between items-center'>
 
         <div className='lg:hidden flex w-[35px] cursor-pointer' onClick={() => setShowSidebar(!showSidebar)}>
