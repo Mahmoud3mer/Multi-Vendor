@@ -19,7 +19,7 @@ export default function Header({showSidebar, setShowSidebar}) {
             <span className='text-xs'>Admin</span>
           </div>
           <div>
-            <img src='../../public/images/admin.jpg' className='w-[45px] h-[45px] rounded-full overflow-hidden'/>
+            <img src='http://localhost:5173/images/admin.jpg' className='w-[45px] h-[45px] rounded-full overflow-hidden'/>
           </div>
         </div>
       </div>

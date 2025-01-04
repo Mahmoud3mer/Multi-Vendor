@@ -16,7 +16,7 @@ export default function Pagination({pageNumber, setPageNumber, totalItems, perPa
         const btns = [];
         for (let i = startPage; i <= endPage; i++) {
             btns.push(
-                <li onClick={() => setPageNumber(i)} className={`${pageNumber === i? 'bg-indigo-300 text-white ' : 'bg-slate-600 text-[#d0d2d6]'} w-[33px] h-[33px] rounded-full flex justify-center items-center cursor-pointer hover:bg-indigo-400`}>
+                <li key={i} onClick={() => setPageNumber(i)} className={`${pageNumber === i? 'bg-indigo-300 text-white ' : 'bg-slate-600 text-[#d0d2d6]'} w-[33px] h-[33px] rounded-full flex justify-center items-center cursor-pointer hover:bg-indigo-400`}>
                     {i}
                 </li>
             )

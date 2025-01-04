@@ -31,7 +31,7 @@ export default function Sidebar({showSidebar, setShowSidebar}) {
       <div className={`bg-[#e6e7fb] shadow-[0_0_15px_0_rgb(34_41_37_/_5%)] w-[260px] fixed top-0 z-50 transition-all h-screen ${showSidebar? 'left-0' : '-left-[260px] lg:left-0'}`}>
         <div className='h-[70px] flex justify-center items-center'>
           <Link to={'/'} className='w-[170px] h-[50px]'>
-            <img src="../../public/images/logo.png" alt="logo" className='w-full h-full'/>
+            <img src="http://localhost:5173/images/logo.png" alt="logo" className='w-full h-full'/>
           </Link>
         </div>
 
