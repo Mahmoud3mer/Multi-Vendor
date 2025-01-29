@@ -22,7 +22,7 @@ const AdminDashboard = () => {
             }
         ],
         options: {
-            color: ['#181ee8', '#181ee8'],
+            colors: ['#181ee8', '#ff4560', '#008ffb'],
             plotOptions: {
                 radius: 30
             },
@@ -73,6 +73,7 @@ const AdminDashboard = () => {
     return (
         <>
             <div className="px-2 lg:px-7 py-5 w-full">
+                
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-7 w-full">
                     <div className="flex justify-between items-center bg-[#fae8e8] rounded-md p-5 gap-3">
                         <div className="text-[#5c5a5a]">

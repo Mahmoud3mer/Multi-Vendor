@@ -1,16 +1,21 @@
 import { lazy, StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
+
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { store } from './store/Reducers/store.jsx'
 import { Toaster } from 'react-hot-toast'
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 const App = lazy(() => import('./App.jsx'))
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
+      <QueryClientProvider client={queryClient}>
       <Provider store={store}>
         <App />
         <Toaster toastOptions={{
@@ -21,6 +26,7 @@ createRoot(document.getElementById('root')).render(
           }
         }}/>
       </Provider>
+      </QueryClientProvider>
     </BrowserRouter>
   </StrictMode>,
 )

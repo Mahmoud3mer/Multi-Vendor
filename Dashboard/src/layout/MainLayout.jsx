@@ -10,12 +10,20 @@ export default function MainLayout() {
 
 
     <div className='bg-[#cdcae9] h-screen w-screen overflow-x-auto'>
-        <Sidebar showSidebar={showSidebar} setShowSidebar={setShowSidebar}/>
-        <Header showSidebar={showSidebar} setShowSidebar={setShowSidebar}/>
-        
-      <div className='ml-0 lg:ml-[260px] pt-[95px] transition-all'>
-        <Outlet/>
-      </div>
+      {/* <video
+        src="../../public/images/cubes.mp4"
+        muted
+        autoPlay
+        loop
+        playsInline
+        className='fixed top-0 left-0 -z-10 opacity-60'
+      ></video> */}
+      <Sidebar showSidebar={showSidebar} setShowSidebar={setShowSidebar}/>
+      <Header showSidebar={showSidebar} setShowSidebar={setShowSidebar}/>
+      
+    <div className='ml-0 lg:ml-[260px] pt-[95px] transition-all'>
+      <Outlet/>
+    </div>
 
     </div>
   )
