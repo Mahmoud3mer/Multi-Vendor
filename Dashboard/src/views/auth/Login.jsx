@@ -1,19 +1,31 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom';
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
 import { GoEye } from "react-icons/go";
 import { GoEyeClosed } from "react-icons/go";
+import { useDispatch, useSelector } from 'react-redux';
+import { clearMessage, seller_login } from '../../store/Reducers/authReducer';
+import toast from 'react-hot-toast';
 
 
 const Login = () => {
-
   const [data, setData] = useState({
     email: '',
     password: '',
   });
 
+  const [dataError, setDataError] = useState({
+    emailErr: '',
+    passwordErr: '',
+  });
+
   const [hidePass, setHidePass] = useState(true);
+
+  const selector = useSelector(state => state.auth);
+  const {loader, errorMessage, successMessage} = selector;
+  const dispatch = useDispatch();
+  const navigate = useNavigate()
 
   const inputHandel = (e) => {
     let name = e.target.name;
@@ -22,10 +34,45 @@ const Login = () => {
       ...data,
       [name]: value
     })
+    if (name === 'email') {
+      if (!value) {
+        setDataError({
+          ...dataError,
+          emailErr: 'Email is required.'
+        })
+      }
+    }
+    if (name === 'password') {
+      if (!value) {
+        setDataError({
+          ...dataError,
+          passwordErr: 'Password is required.'
+        })
+      }
+    }
   }
+
+  useEffect(() => {
+    if (errorMessage) {
+      toast.error(errorMessage,{
+        duration: 2000
+    })
+      dispatch(clearMessage())
+    }
+    if (successMessage) {
+      toast.success(successMessage,{
+          duration: 2000
+      })
+      dispatch(clearMessage())
+      navigate('/')
+  }
+  }, [errorMessage, successMessage])
 
   const handelSubmit = (e) => {
     e.preventDefault()
+    if (!dataError.emailErr && !dataError.passwordErr) {
+      dispatch(seller_login(data))
+    }
   }
 
   const showHidePass = () => {
@@ -52,6 +99,9 @@ const Login = () => {
                 value={data.email}
                 onChange={(e) => inputHandel(e)}
               />
+              {
+                dataError.emailErr ? <div className='text-red-700 text-xs font-semibold m-0'>{dataError.emailErr}</div> : ''
+              }
             </div>
 
             <div className='flex flex-col gap-1 mb-3 relative'>
@@ -70,8 +120,15 @@ const Login = () => {
               <span className='absolute bottom-[12px] right-[12px] text-gray-900 cursor-pointer' onClick={showHidePass}><GoEye/></span>
               }
             </div>
+            {
+                dataError.passwordErr ? <div className='text-red-700 text-xs font-semibold m-0'>{dataError.passwordErr}</div> : ''
+            }
 
-            <button className='bg-slate-800 w-full px-7 py-2 mb-3 rounded-md text-white hover:shadow-blue-300 hover:shadow-lg hover:scale-95 transition duration-200'>Sign In</button>
+            <button className='bg-slate-800 w-full px-7 py-2 mb-3 rounded-md text-white hover:shadow-blue-300 hover:shadow-lg hover:scale-95 transition duration-200'>
+              {
+                loader ? 'Sign In...' : 'Sign In'
+              }
+            </button>
           
           <div className='flex items-center justify-center mb-3 gap-3'>
             <p>Don't have an account? <Link to={'/register'} className='font-bold hover:underline transition duration-200'>Sign Up</Link></p>

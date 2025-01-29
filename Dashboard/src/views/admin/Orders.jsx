@@ -47,7 +47,7 @@ const Orders = () => {
                                         <td scope="row" className='py-3 px-4 font-medium whitespace-nowrap'>Pending</td>
                                         <td scope="row" className='py-3 px-4 font-medium whitespace-nowrap'>Pending</td>
                                         <td scope="row" className='py-3 px-4 font-medium whitespace-nowrap'>
-                                            <Link>View</Link>
+                                            <Link className='bg-[#8088ed] px-2 py-[5px] rounded-sm hover:bg-[#7279d4] hover:shadow-sm shadow-indigo-600/50' to={'/admin/dashboard/order/details/6'}>View</Link>
                                         </td>
                                         <td scope="row" className='py-3 px-4 font-medium whitespace-nowrap cursor-pointer' onClick={(e) => showOrderData(e)}><LuArrowDownFromLine/></td>
                                     </tr>

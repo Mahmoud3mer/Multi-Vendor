@@ -4,16 +4,18 @@ import getNav from '../navigation';
 import { CgLogOut } from "react-icons/cg";
 import { useNavigate } from "react-router-dom";
 import { FaArrowLeft } from 'react-icons/fa';
+import { useSelector } from 'react-redux';
 
 export default function Sidebar({showSidebar, setShowSidebar}) {
   const [allNav, setAllNav] = useState([]);
   const {pathname} = useLocation();
   const navigate = useNavigate();
+  const {role} = useSelector(state => state.auth);
 
   useEffect(() => {
-    const navs = getNav('admin');
+    const navs = getNav(role);
     setAllNav(navs);
-  }, [])
+  }, [role])
 
   // console.log(allNav);
   // console.log(pathname);
@@ -39,7 +41,7 @@ export default function Sidebar({showSidebar, setShowSidebar}) {
           <ul>
             {
               allNav.map((nav, index) =>
-              <li key={nav.id} className={`${pathname === nav.path && 'bg-blue-500 text-white shadow-indigo-500/50 duration-500'} px-4 py-2 mx-4 flex items-center gap-2 rounded font-semibold hover:pl-5 transition-all duration-200`}>{nav.icon}<Link to={nav.path}>{nav.title}</Link></li>
+              <li key={nav.id} className={`${pathname === nav.path ? 'bg-blue-500 text-white shadow-indigo-500/50 duration-500 hover:text-white' : 'hover:text-blue-500'} px-4 py-2 mx-4 flex items-center gap-2 rounded font-semibold hover:pl-5 transition-all duration-200`}>{nav.icon}<Link to={nav.path}>{nav.title}</Link></li>
               )
             }
 

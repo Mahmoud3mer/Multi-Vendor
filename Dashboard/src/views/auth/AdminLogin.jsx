@@ -30,7 +30,7 @@ const AdminLogin = () => {
     const cssOverrideProperties = {
         display: 'flex',
         justifyContent: 'center',
-        alignItem: 'center',
+        alignItems: 'center',
         margin: '0 auto'
     }
 
@@ -101,8 +101,7 @@ const AdminLogin = () => {
     return (
         <div className="bg-[#cdcae9] w-screen h-screen flex justify-center items-center">
             <div className="w-[350px] p-2 text-[#ffffff]">
-                <div className="bg-[#1c1b1d] p-4 rounded-md">
-                    
+                <div className="bg-[#6f68d1] p-4 rounded-md">
                     <div className="h-[70px] flex justify-center items-center">
                         <div className="w-[180p] h-[50px]">
                             <img className="w-full h-full" src=".././../../public/images/logo.png" alt="logo" />
